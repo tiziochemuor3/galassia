@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Una Galassia d'Amore Per Te</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+
+<body>
+
+  <div id="card" class="card-overlay">
+    <h1>Una Galassia d'Amore</h1>
+    <p>Buon Anniversario, Amore Mio</p>
+    <button class="btn-enter" onclick="avviaViaggioSpaziale()">ENTRA NEL NOSTRO UNIVERSO</button>
+  </div>
+
+  <!-- Titolo in alto sopra al pianeta -->
+  <div id="planetTopTitle" class="planet-header-title">Nome Pianeta</div>
+
+  <!-- Sfondo oscurante bloccante (Rende le finestre "fisiche") -->
+  <div id="modalBackdrop" class="modal-backdrop" onclick="chiudiTuttoModale()"></div>
+
+  <!-- Modale per le Parole/Frasi Fluttuanti e l'Avventura (Centrata) -->
+  <div id="storyModal" class="modal-centered">
+    <div class="modal-content-box">
+      <span class="close-btn" onclick="chiudiStoria()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalContent"></p>
+
+      <!-- CONTENITORE SPECIALE PER I 5 PULSANTI DEL CUORE GIALLO -->
+      <!-- CONTENITORE SPECIALE PER I 5 PULSANTI DEL CUORE GIALLO -->
+      <div id="cuoreGialloInterazione" style="display: none; margin-top: 15px;">
+        <p style="color: #ffeb3b; font-size: 0.9rem; margin-bottom: 10px;">La tua risposta ufficiale:</p>
+
+        <!-- I 4 Pulsanti -->
+        <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
+          <button class="btn-action" style="background: linear-gradient(45deg, #00ff88, #00aa55); padding: 6px 14px;"
+            onclick="inviaRispostaCuoreGiallo('SI')">SI ❤️</button>
+          <button class="btn-action" style="background: linear-gradient(45deg, #ff3366, #cc0033); padding: 6px 14px;"
+            onclick="inviaRispostaCuoreGiallo('NO')">NO</button>
+          <button class="btn-action" style="background: linear-gradient(45deg, #ffaa00, #cc8800); padding: 6px 14px;"
+            onclick="inviaRispostaCuoreGiallo('non lo so')">non lo so</button>
+          <button class="btn-action" style="background: linear-gradient(45deg, #00ccff, #0077aa); padding: 6px 14px;"
+            onclick="inviaRispostaCuoreGiallo('ne parliamo su whatsapp')">ne parliamo su whatsapp</button>
+        </div>
+
+        <!-- 5. Casella di testo personalizzata (Form Formspree) -->
+        <form action="https://formspree.io/f/xrevogdv" method="POST" onsubmit="inviaRispostaCustomCuore(event)">
+          <textarea name="risposta_speciale_cuore" id="testoRispostaCustom"
+            placeholder="Scrivi qui la tua risposta personalizzata..." required class="secret-textarea"
+            style="height: 50px; margin-bottom: 6px;"></textarea>
+          <button type="submit" class="btn-action"
+            style="padding: 6px 16px; font-size: 0.85rem; background: linear-gradient(45deg, #ff007f, #7928ca);">Invia
+            risposta personalizzata 🚀</button>
+        </form>
+        <p id="rispostaInviataFeedback" style="font-size: 0.85rem; color: #00ff88; margin-top: 6px; display: none;">
+          Risposta
+          inviata con successo al suo cuore! ❤️✨</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale per i Pianeti e i PIN (In basso) -->
+  <div id="planetModal" class="modal-bottom">
+    <div class="modal-content-box">
+      <span class="close-btn" onclick="chiudiPianeta()">&times;</span>
+      <h2 id="planetTitle"></h2>
+      <p id="planetStoryText"></p>
+
+      <div id="planetQuizBox">
+        <p id="planetQuestion"></p>
+        <input type="password" id="pinInput" placeholder="Inserisci PIN" maxlength="15" class="pin-input">
+        <br>
+        <button class="btn-action" onclick="verificaPin()">Sblocca</button>
+        <p id="pinMessage" class="error-text"></p>
+      </div>
+
+      <!-- SELETTORE SPECIALE PER IL PIANETA CUORE (Parte Gialla / Parte Arancione) -->
+      <div id="cuoreChoiceBox" style="display: none; margin-top: 15px;">
+        <p style="color: #ff99cc; margin-bottom: 12px; font-size: 0.95rem;">Scegli quale parte del nostro Cuore vuoi
+          aprire:
+        </p>
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <button class="btn-action" style="background: linear-gradient(45deg, #ffc107, #ff9800); color: #000;"
+            onclick="selezionaLatoCuore('giallo')">💛 il mio cuore</button>
+          <button class="btn-action" style="background: linear-gradient(45deg, #ff5722, #ff9800);"
+            onclick="selezionaLatoCuore('arancione')">🧡 il tuo cuore</button>
+        </div>
+      </div>
+
+      <!-- Box PIN per la parte Gialla -->
+      <div id="cuorePinBox" style="display: none; margin-top: 10px;">
+        <p style="color: #ffeb3b; font-size: 0.9rem; margin-bottom: 8px;">Inserisci password segreta:</p>
+        <input type="password" id="cuorePinInput" placeholder="INSERISCI PASSWORD" maxlength="30" class="pin-input"
+          style="width: 240px; font-size: 0.95rem; letter-spacing: normal;">
+        <br>
+        <button class="btn-action" onclick="verificaPinCuoreGiallo()">Entra</button>
+        <p id="cuorePinMsg" class="error-text"></p>
+      </div>
+
+      <!-- Form per la parte Arancione di Greta (Solo Testo + Formspree) -->
+      <div id="cuoreGretaFormBox" style="display: none; margin-top: 10px;">
+        <form action="https://formspree.io/f/xrevogdv" method="POST" onsubmit="inviaMessaggioGretaCuore(event)">
+          <textarea name="messaggio_cuore_greta"
+            placeholder="Scrivi qui il tuo messaggio speciale per il nostro cuore..." required class="secret-textarea"
+            style="margin-bottom: 8px;"></textarea>
+          <br>
+          <button type="submit" class="btn-action" style="padding: 8px 20px; font-size: 0.9rem;">Invia nel Cuore
+            🚀</button>
+        </form>
+        <p id="cuoreFormFeedback" style="font-size: 0.85rem; color: #00ff88; margin-top: 8px; display: none;">Messaggio
+          custodito per sempre nel nostro Cuore! ❤️✨</p>
+      </div>
+
+      <!-- Contenitore dei 3 elementi sbloccabili standard (Regalo, Dedica, Pergamena) -->
+      <div id="planetUnlockExtras" class="unlock-extras-container" style="display: none;">
+        <div class="extra-box" onclick="apriContenutoExtra('regalo')">🎁 Regalo</div>
+        <div class="extra-box" onclick="apriContenutoExtra('dedica')">💌 Dedica</div>
+        <div id="pergamenaBtnWrapper" class="extra-box scroll-box" onclick="apriContenutoExtra('pergamena')">📜
+          Pergamena (Indizio)</div>
+      </div>
+
+      <!-- Contenitore speciale per l'ultimo pianeta (Aetheria): Regalo, Dedica e Form Messaggio -->
+      <div id="planetFinalExtras" class="unlock-extras-container" style="display: none;">
+        <div class="extra-box" onclick="apriContenutoExtra('regalo')">🎁 Regalo</div>
+        <div class="extra-box" onclick="apriContenutoExtra('dedica')">💌 Dedica</div>
+      </div>
+
+      <!-- Pulsante per aprire il form di messaggio (per l'ultimo pianeta) -->
+      <div id="planetSecretFormBtn" style="display: none; margin-top: 12px;">
+        <button class="btn-action" onclick="apriFormMessaggio()">(clicca solo se hai gia letto il resto) Scrivi un
+          messaggio per me</button>
+      </div>
+
+      <!-- Form Formspree a scomparsa -->
+      <div id="planetSecretForm" style="display: none; margin-top: 10px;">
+        <form action="https://formspree.io/f/xrevogdv" method="POST" onsubmit="inviaMessaggioSegreto(event)">
+          <textarea name="messaggio_di_greta" placeholder="Scrivi qui il tuo messaggio segreto per me..." required
+            class="secret-textarea"></textarea>
+          <br>
+          <button type="submit" class="btn-action"
+            style="margin-top: 5px; padding: 6px 16px; font-size: 0.85rem;">Invia</button>
+        </form>
+        <p id="formFeedback" style="font-size: 0.85rem; color: #00ff88; margin-top: 5px; display: none;">Messaggio
+          lanciato
+          nello spazio! Guarda fuori, è apparsa una capsula fluttuante 🚀✨</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pannello Informativo Laterale per i Pianeti -->
+  <div id="planetInfoPanel" class="planet-info-panel">
+    <h3 id="infoTitle">Nome Pianeta</h3>
+    <p class="disclaimer-text">è inutile tranquilla non serve leggerli</p>
+
+    <div id="infoBody" class="info-body">
+      <!-- Le descrizioni verranno caricate qui via JS -->
+    </div>
+
+    <div id="infoStats" class="planet-stats">
+      <!-- Statistiche caricate via JS -->
+    </div>
+  </div>
+
+  <div id="sunToast" class="sun-toast"></div>
+
+  <div id="canvas-container"></div>
+
+  <!-- Elemento Audio per la musica dinamica -->
+  <audio id="bgAudio" loop></audio>
+
+  <!-- Pulsante Toggle Musica -->
+  <button id="musicToggleBtn" class="music-toggle-btn" onclick="toggleMusica()" title="Attiva/Disattiva Musica">
+    <span id="musicIcon">🎵</span>
+  </button>
+
+  <!-- Script JS -->
+  <script src="js/textures.js"></script>
+  <script src="js/pyrosTexture.js"></script>
+  <script src="js/catOrbiters.js"></script>
+  <script src="js/spaceBackground.js"></script>
+  <script src="js/objects.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/regali.js"></script>
+
+</body>
+
+</html>
