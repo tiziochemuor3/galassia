@@ -576,85 +576,38 @@ body {
     opacity: 0.6;
 }
 
-/* --- OTTIMIZZAZIONE DEFINITIVA PER SMARTPHONE --- */
+
+/* Nasconde il pulsante info e la X su PC/Desktop */
+.mobile-only-btn {
+    display: none !important;
+}
+
 @media (max-width: 768px) {
-    /* Schermata iniziale */
-    .card-overlay {
-        width: 90% !important;
-        padding: 22px !important;
-    }
-    .card-overlay h1 {
-        font-size: 1.5rem !important;
+
+    /* Mostra il pulsante info e la X SOLO su Smartphone */
+    .mobile-only-btn {
+        display: inline-block !important;
     }
 
-    /* Titolo in alto del pianeta */
-    .planet-header-title {
-        font-size: 1.3rem !important;
-        top: 12px !important;
-        width: 80% !important;
-    }
-
-    /* Nasconde il pannello informativo su telefono per non coprire il PIN e il pianeta */
+    /* Su smartphone il pannello originale resta nascosto all'apertura del pianeta,
+       e quando viene aperto col pulsante appare identico a quello PC centrato sopra tutto */
     .planet-info-panel {
-        display: none !important;
-    }
-
-    /* Finestra del PIN in basso ben visibile e sopra a tutto */
-    .modal-bottom {
         display: none;
-        position: fixed !important;
-        bottom: 15px !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: 94% !important;
-        max-width: 94% !important;
-        padding: 18px 15px !important;
-        z-index: 30 !important;
-        max-height: 50vh !important;
-        overflow-y: auto !important;
-    }
-
-    .modal-bottom h2 {
-        font-size: 1.15rem !important;
-        padding-right: 20px !important;
-    }
-
-    /* Finestra centrale delle dediche e dell'avventura */
-    .modal-centered {
         position: fixed !important;
         top: 50% !important;
         left: 50% !important;
+        right: auto !important;
+        bottom: auto !important;
         transform: translate(-50%, -50%) !important;
-        width: 94% !important;
-        max-width: 94% !important;
-        padding: 20px 15px !important;
+        width: 90% !important;
+        max-width: 360px !important;
         max-height: 82vh !important;
-        z-index: 45 !important;
+        z-index: 60 !important;
+        box-shadow: 0 0 35px rgba(0, 255, 255, 0.5) !important;
     }
 
-    .modal-centered p {
-        max-height: 45vh !important;
-        font-size: 0.92rem !important;
-    }
-
-    /* Input PIN comodo per il touch (16px evita lo zoom automatico su iPhone/Android) */
-    .pin-input {
-        width: 180px !important;
-        font-size: 16px !important;
-        padding: 10px !important;
-    }
-
-    .secret-textarea, .plush-textarea {
-        height: 65px !important;
-        font-size: 16px !important;
-    }
-
-    /* Pulsante musica più compatto */
-    .music-toggle-btn {
-        top: 12px !important;
-        left: 12px !important;
-        width: 38px !important;
-        height: 38px !important;
-        font-size: 1rem !important;
+    /* Classe attiva quando si preme il pulsante da telefono */
+    .planet-info-panel.mobile-open {
+        display: block !important;
     }
 }
