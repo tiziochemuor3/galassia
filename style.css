@@ -437,8 +437,6 @@ body {
     box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
 }
 
-
-
 /* Il contenitore del bouquet ingrandito in primo piano */
 .tulips-container {
     position: fixed;
@@ -456,8 +454,7 @@ body {
 }
 
 .tulips-container.show {
-    bottom: -80px;
-    /* Sollevati di più per mostrare i lunghi gambi */
+    bottom: -80px; /* Valore per PC */
 }
 
 /* Tulipani più grandi e ben distanziati */
@@ -466,7 +463,6 @@ body {
     height: auto;
     filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.7));
     margin: 0 -12px;
-    /* Perfettamente distanziati per vederli a gruppi */
     position: relative;
 }
 
@@ -576,7 +572,6 @@ body {
     opacity: 0.6;
 }
 
-
 /* Nasconde il pulsante info e la X su PC/Desktop */
 .mobile-only-btn {
     display: none !important;
@@ -584,6 +579,16 @@ body {
 
 @media (max-width: 768px) {
 
+/* Solleva molto di più i tulipani su smartphone in modo che si vedano interi e non solo le punte */
+    .tulips-container.show {
+        bottom: 20px !important;
+    }
+
+    /* Riduci leggermente la larghezza dei singoli tulipani su mobile se serve a farli stare meglio in fila */
+    .flower-svg {
+        width: 85px !important;
+        margin: 0 -8px !important;
+    }
     /* Mostra il pulsante info e la X SOLO su Smartphone */
     .mobile-only-btn {
         display: inline-block !important;
