@@ -1060,3 +1060,23 @@ function cambiaMusica(tipo) {
     audio.play().catch(e => console.log("Riproduzione audio bloccata dal browser finché l'utente non interagisce."));
   }
 }
+
+// Funzione per aprire le informazioni del pianeta tramite modale pulita da telefono
+function apriInfoPianetaMobile() {
+  const data = datiPianeti[currentSelectedPlanet];
+  if (!data) return;
+
+  let statisticheHtml = "";
+  if (data.stats) {
+    statisticheHtml = `
+      \n\n📊 STATISTICHE DEL PIANETA:
+      • Acqua: ${data.stats.acqua}
+      • Vento: ${data.stats.vento}
+      • Gravità: ${data.stats.gravita}
+      • Abitabilità: ${data.stats.abitabile}
+    `;
+  }
+
+  const testoCompleto = `${data.info}\n${statisticheHtml}`;
+  apriStoria(`ℹ️ ${data.nomeDisplay || data.nome}`, testoCompleto);
+}
