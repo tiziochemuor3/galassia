@@ -576,79 +576,85 @@ body {
     opacity: 0.6;
 }
 
-/* --- OTTIMIZZAZIONE PER SMARTPHONE E SCHERMI PICCOLI --- */
+/* --- OTTIMIZZAZIONE DEFINITIVA PER SMARTPHONE --- */
 @media (max-width: 768px) {
-
-    /* Schermata iniziale (card ben centrata e non troppo larga) */
+    /* Schermata iniziale */
     .card-overlay {
-        width: 92% !important;
-        padding: 20px !important;
+        width: 90% !important;
+        padding: 22px !important;
     }
-
     .card-overlay h1 {
         font-size: 1.5rem !important;
     }
 
-    /* Finestre modali centrali e in basso adattate allo schermo del telefono */
-    .modal-centered,
-    .modal-bottom {
-        width: 95% !important;
-        max-width: 95% !important;
-        padding: 18px 15px !important;
-        max-height: 80vh !important;
-        left: 50% !important;
-        transform: translateX(-50%) translateY(-50%) !important;
-        /* per la centrata */
+    /* Titolo in alto del pianeta */
+    .planet-header-title {
+        font-size: 1.3rem !important;
+        top: 12px !important;
+        width: 80% !important;
     }
 
-    .modal-bottom {
-        bottom: 2% !important;
-        transform: translateX(-50%) !important;
-    }
-
-    /* Testi interni scorrevoli e leggibili senza uscire dai bordi */
-    .modal-centered p {
-        max-height: 40vh !important;
-        font-size: 0.9rem !important;
-    }
-
-    /* Pannello informativo del pianeta spostato in basso per non coprire la vista 3D */
+    /* Nasconde il pannello informativo su telefono per non coprire il PIN e il pianeta */
     .planet-info-panel {
-        position: absolute !important;
-        bottom: 10px !important;
-        top: auto !important;
-        right: 50% !important;
-        transform: translateX(50%) !important;
-        width: 95% !important;
-        max-height: 28vh !important;
-        padding: 12px !important;
-        font-size: 0.85rem !important;
+        display: none !important;
     }
 
-    /* Input dei PIN e textarea più comodi da toccare con le dita */
+    /* Finestra del PIN in basso ben visibile e sopra a tutto */
+    .modal-bottom {
+        display: none;
+        position: fixed !important;
+        bottom: 15px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 94% !important;
+        max-width: 94% !important;
+        padding: 18px 15px !important;
+        z-index: 30 !important;
+        max-height: 50vh !important;
+        overflow-y: auto !important;
+    }
+
+    .modal-bottom h2 {
+        font-size: 1.15rem !important;
+        padding-right: 20px !important;
+    }
+
+    /* Finestra centrale delle dediche e dell'avventura */
+    .modal-centered {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 94% !important;
+        max-width: 94% !important;
+        padding: 20px 15px !important;
+        max-height: 82vh !important;
+        z-index: 45 !important;
+    }
+
+    .modal-centered p {
+        max-height: 45vh !important;
+        font-size: 0.92rem !important;
+    }
+
+    /* Input PIN comodo per il touch (16px evita lo zoom automatico su iPhone/Android) */
     .pin-input {
-        width: 160px !important;
-        font-size: 1rem !important;
+        width: 180px !important;
+        font-size: 16px !important;
+        padding: 10px !important;
     }
 
-    .secret-textarea,
-    .plush-textarea {
-        height: 60px !important;
-        font-size: 0.85rem !important;
+    .secret-textarea, .plush-textarea {
+        height: 65px !important;
+        font-size: 16px !important;
     }
 
-    /* Pulsante musica in alto a sinistra più compatto */
+    /* Pulsante musica più compatto */
     .music-toggle-btn {
-        top: 10px !important;
-        left: 10px !important;
+        top: 12px !important;
+        left: 12px !important;
         width: 38px !important;
         height: 38px !important;
         font-size: 1rem !important;
-    }
-
-    /* Titolo in alto del pianeta */
-    .planet-header-title {
-        font-size: 1.4rem !important;
-        top: 4% !important;
     }
 }
