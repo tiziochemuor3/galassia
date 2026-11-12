@@ -69,6 +69,11 @@
     <div class="modal-content-box">
       <span class="close-btn" onclick="chiudiPianeta()">&times;</span>
       <h2 id="planetTitle"></h2>
+
+      <!-- PULSANTE INFO PIANETA (Visibile SOLO su Smartphone) -->
+      <button id="btnInfoMobile" class="btn-action mobile-only-btn"
+        style="background: linear-gradient(45deg, #00b4d8, #0077b6); font-size: 0.85rem; padding: 6px 15px; margin-bottom: 10px;"
+        onclick="apriInfoPianetaMobile()">ℹ️ Scopri Info & Statistiche</button>
       <p id="planetStoryText"></p>
 
       <div id="planetQuizBox">
@@ -154,6 +159,7 @@
 
   <!-- Pannello Informativo Laterale per i Pianeti -->
   <div id="planetInfoPanel" class="planet-info-panel">
+    <span class="close-btn mobile-only-btn" onclick="chiudiInfoPianetaMobile()">&times;</span>
     <h3 id="infoTitle">Nome Pianeta</h3>
     <p class="disclaimer-text">è inutile tranquilla non serve leggerli</p>
 
