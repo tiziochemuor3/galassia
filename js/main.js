@@ -460,7 +460,13 @@ function focalizzaPianeta(planetMesh) {
         </div>
       `;
     }
-    document.getElementById('planetInfoPanel').style.display = 'block';
+    const panel = document.getElementById('planetInfoPanel');
+    panel.classList.remove('mobile-open');
+    if (window.innerWidth > 768) {
+      panel.style.display = 'block';
+    } else {
+      panel.style.display = 'none';
+    }
   }
 
   document.getElementById('planetModal').style.display = 'block';
@@ -1066,6 +1072,7 @@ function apriInfoPianetaMobile() {
   const panel = document.getElementById('planetInfoPanel');
   if (panel) {
     panel.classList.add('mobile-open');
+    panel.style.display = 'block';
   }
 }
 
@@ -1074,5 +1081,6 @@ function chiudiInfoPianetaMobile() {
   const panel = document.getElementById('planetInfoPanel');
   if (panel) {
     panel.classList.remove('mobile-open');
+    panel.style.display = 'none';
   }
 }
