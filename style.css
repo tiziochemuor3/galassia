@@ -610,4 +610,16 @@ body {
     .planet-info-panel.mobile-open {
         display: block !important;
     }
+
+    /* Rende la X del pannello info ben cliccabile al tocco su smartphone */
+    .planet-info-panel .close-btn {
+        top: 8px !important;
+        right: 12px !important;
+        font-size: 30px !important;
+        padding: 5px 10px !important;
+        z-index: 70 !important;
+        color: #fff !important;
+        cursor: pointer !important;
+        touch-action: manipulation !important;
+    }
 }
