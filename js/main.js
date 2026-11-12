@@ -1061,22 +1061,18 @@ function cambiaMusica(tipo) {
   }
 }
 
-// Funzione per aprire le informazioni del pianeta tramite modale pulita da telefono
+// Apre il pannello info originale identico al PC su smartphone
 function apriInfoPianetaMobile() {
-  const data = datiPianeti[currentSelectedPlanet];
-  if (!data) return;
-
-  let statisticheHtml = "";
-  if (data.stats) {
-    statisticheHtml = `
-      \n\n📊 STATISTICHE DEL PIANETA:
-      • Acqua: ${data.stats.acqua}
-      • Vento: ${data.stats.vento}
-      • Gravità: ${data.stats.gravita}
-      • Abitabilità: ${data.stats.abitabile}
-    `;
+  const panel = document.getElementById('planetInfoPanel');
+  if (panel) {
+    panel.classList.add('mobile-open');
   }
+}
 
-  const testoCompleto = `${data.info}\n${statisticheHtml}`;
-  apriStoria(`ℹ️ ${data.nomeDisplay || data.nome}`, testoCompleto);
+// Chiude il pannello info su smartphone
+function chiudiInfoPianetaMobile() {
+  const panel = document.getElementById('planetInfoPanel');
+  if (panel) {
+    panel.classList.remove('mobile-open');
+  }
 }
