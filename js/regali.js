@@ -276,7 +276,7 @@ function avviaRegaloPyros() {
 
       <p style="font-size: 0.9rem; color: #eee; margin-bottom: 15px; line-height: 1.4;">
         Per te che sei la mia vita e la mia luce.<br>
-        i tuoi <b>22 tulipani</b>. avrei voluto fartene 89 pero purtroppo il sito non reggeva. sorry.\n\nmi dispiace davvero quindi per questo piccolo inconveniente ti ho lasciato una sorpresa nel vecchio sito. appena finisci qui vai a vederla.
+        i tuoi <b>22 tulipani</b>. avrei voluto fartene 89 pero purtroppo il sito non reggeva, e poi sono orribili pero meglio di cosi non so come farli. sorry.\n\nmi dispiace davvero quindi per questo piccolo inconveniente ti ho lasciato una sorpresa nel vecchio sito. appena finisci qui vai a vederla.
       </p>
     </div>
   `;
