@@ -639,7 +639,7 @@ function gestisciClickSole() {
     toast.innerText = "Prima di questo sole, la galassia era buia, del tutto spenta. Appena l'ho messo mi sei venuta subito in mente tu: mi hai ricordato quanto riesci a brillare anche nell'oscurità e come sai illuminare chiunque ti stia vicino. In parole più semplici, l'ho fatto soprattutto per riassaporare quella te estiva, così piena di vita.\n\nQuando leggerai queste parole sarà ormai il primo dicembre: fuori fa freddo e la stella splendente che sei è come avvolta dalla neve, pronta però a riaccendersi per tornare a risplendere a pieno. Ogni volta che ti parlo mi cambi la giornata, mi illumini la vita. Sei la luce che non trovo in nessun altro posto al mondo, sei il mio sole.\n\nTi amo, Greta, davvero. Ti amo tantissimo.";
     setTimeout(() => { toast.style.display = 'none'; sunBurned = true; }, 5000);
   } else {
-    toast.innerText = "Il sole ha bruciato il messaggio, non odiarmi per questo.\nah e scusa se la grafica è bruttina.";
+    toast.innerText = "Il sole ha bruciato il messaggio, non odiarmi per questo.";
     setTimeout(() => toast.style.display = 'none', 3500);
   }
 }
