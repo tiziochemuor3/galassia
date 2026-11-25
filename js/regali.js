@@ -4,16 +4,16 @@
 // PIANETA GHIACCIATO: MINIGIOCO 10 DOMANDE
 // ==========================================
 const domandeMinigiocoGhiacciato = [
-  { domanda: "Chi si preoccupa di più per i dettagli e l'organizzazione?", rispostaCorretta: "lei" },
-  { domanda: "Chi tiene il broncio più a lungo quando si discute?", rispostaCorretta: "lei" },
-  { domanda: "Chi si addormenta prima durante le chiamate la sera?", rispostaCorretta: "io" },
+  { domanda: "Chi si preoccupa di più per i dettagli e l'organizzazione per vederci?", rispostaCorretta: "lei" },
+  { domanda: "Chi inventa i soppranomi più strani..", rispostaCorretta: "lei" },
+  { domanda: "Chi si addormenta prima durante le chiamate la sera?", rispostaCorretta: "lei" },
   { domanda: "Chi invita di più l'altro a fare chiamate?", rispostaCorretta: "lei" },
-  { domanda: "Chi scrive i messaggi più lunghi (i famosi papiri)?", rispostaCorretta: "io" },
-  { domanda: "Chi chiede più scusa?", rispostaCorretta: "io" },
+  { domanda: "Chi scrive i messaggi più lunghi?", rispostaCorretta: "io" },
+  { domanda: "Chi è sempre stanco", rispostaCorretta: "io" },
   { domanda: "Chi fa più battute stupide?", rispostaCorretta: "lei" },
   { domanda: "Chi ama di più l'altro?", rispostaCorretta: "io" },
-  { domanda: "Chi ama di più mandare cuori e dolcezze all'improvviso?", rispostaCorretta: "entrambi" },
-  { domanda: "Chi ha la fortuna più grande ad aver trovato l'altra persona?", rispostaCorretta: "entrambi" }
+  { domanda: "Chi è sempre indeciso e non sceglie mai?", rispostaCorretta: "io" },
+  { domanda: "Chi non si stancherebbe mai di parlare dell'altro? (SE LA SBAGLI LITIGHIAMO QUI.)", rispostaCorretta: "entrambi" }
 ];
 
 let indiceDomandaCorrente = 0;
@@ -23,7 +23,7 @@ let punteggioMinigioco = 0;
 // PIANETA ROCCIOSO: RUOTA DELLA FORTUNA (25 MESSAGGI DOLCI)
 // ==========================================
 const messaggiRuotaRoccioso = [
-  "In realtà i messaggi sono tutti dolci... io amo tutto di te, non c'è nulla che odio! ❤️",
+  "In realtà i messaggi sono tutti dolci... io amo tutto di te, non c'è nulla che odio. AMO OGNI SINGOLA COSA DI TE, capirai quando leggerai il resto.",
   "Amo il modo in cui mi fai sorridere anche nei giorni più difficili.",
   "Sei la persona più speciale che abbia mai conosciuto.",
   "Amo la tua voce quando mi parli la sera.",
@@ -111,7 +111,7 @@ function mostraProssimaDomandaMinigioco() {
       <p style="text-align: center; font-size: 1.1rem; color: #00ff88; line-height: 1.6;">
         Hai completato il minigioco di Glacies!<br>
         Punteggio finale: <b>${punteggioMinigioco} / 10</b><br><br>
-        spero per te che il punteggio sia alto
+        IN CASO NON SEI D'ACCORDO CON QUALCHE RISPOSTA ERRATA SO CAZZI TUOI. (dai che ti amo.)
       </p>
     `;
   }
@@ -124,10 +124,10 @@ function rispondiMinigioco(sceltaUtente) {
   if (sceltaUtente === q.rispostaCorretta) {
     punteggioMinigioco++;
     feedback.style.color = "#00ff88";
-    feedback.innerText = "✨ Risposta esatta! Punto registrato.";
+    feedback.innerText = "✨ GRANDE GRETA Punto registrato.";
   } else {
     feedback.style.color = "#ff3366";
-    feedback.innerText = "⚠️ Ops! Rimani a 0 punti per questa domanda.";
+    feedback.innerText = "⚠️ e niente, Rimani a 0 punti per questa domanda.";
   }
 
   indiceDomandaCorrente++;
