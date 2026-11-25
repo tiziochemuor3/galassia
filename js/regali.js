@@ -6,14 +6,14 @@
 const domandeMinigiocoGhiacciato = [
   { domanda: "Chi si preoccupa di più per i dettagli e l'organizzazione per vederci?", rispostaCorretta: "lei" },
   { domanda: "Chi inventa i soppranomi più strani..", rispostaCorretta: "lei" },
-  { domanda: "Chi si addormenta prima durante le chiamate la sera?", rispostaCorretta: "lei" },
   { domanda: "Chi invita di più l'altro a fare chiamate?", rispostaCorretta: "lei" },
   { domanda: "Chi scrive i messaggi più lunghi?", rispostaCorretta: "io" },
+  { domanda: "Chi si addormenta prima durante le chiamate la sera?", rispostaCorretta: "lei" },
+  { domanda: "Chi non si stancherebbe mai di parlare dell'altro? (SE LA SBAGLI LITIGHIAMO QUI.)", rispostaCorretta: "entrambi" }
   { domanda: "Chi è sempre stanco", rispostaCorretta: "io" },
   { domanda: "Chi fa più battute stupide?", rispostaCorretta: "lei" },
   { domanda: "Chi ama di più l'altro?", rispostaCorretta: "io" },
   { domanda: "Chi è sempre indeciso e non sceglie mai?", rispostaCorretta: "io" },
-  { domanda: "Chi non si stancherebbe mai di parlare dell'altro? (SE LA SBAGLI LITIGHIAMO QUI.)", rispostaCorretta: "entrambi" }
 ];
 
 let indiceDomandaCorrente = 0;
