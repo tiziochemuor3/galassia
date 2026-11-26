@@ -9,7 +9,7 @@ const domandeMinigiocoGhiacciato = [
   { domanda: "Chi invita di più l'altro a fare chiamate?", rispostaCorretta: "lei" },
   { domanda: "Chi scrive i messaggi più lunghi?", rispostaCorretta: "io" },
   { domanda: "Chi si addormenta prima durante le chiamate la sera?", rispostaCorretta: "lei" },
-  { domanda: "Chi non si stancherebbe mai di parlare dell'altro? (SE LA SBAGLI LITIGHIAMO QUI.)", rispostaCorretta: "entrambi" }
+  { domanda: "Chi non si stancherebbe mai di parlare dell'altro? (SE LA SBAGLI LITIGHIAMO QUI.)", rispostaCorretta: "entrambi" },
   { domanda: "Chi è sempre stanco", rispostaCorretta: "io" },
   { domanda: "Chi fa più battute stupide?", rispostaCorretta: "lei" },
   { domanda: "Chi ama di più l'altro?", rispostaCorretta: "io" },
